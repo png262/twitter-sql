@@ -29,14 +29,39 @@ module.exports = {
     Tweet: Tweet
 };
 
-// User.findOne().then(function (user) {
-//     console.log(user); // big old crazy object, but no name or id anywhere in there
-// });
 
 // User.findOne().then(function (user) {
-//     console.log(user.name); // produces correct result. wat.
+//     return user.getTweets();
+// })
+// .then(function (tweets) {
+//     console.log(JSON.stringify(tweets)); // another way of just logging the plain old values
+
 // });
 
-User.findOne().then(function (user) {
-    console.log(user.datavalues);
+// FIND ALL TWEETS BY USER
+// User.findOne({where: {id: '3'}})
+// .then(function(user) {
+// 	return user.getTweets();
+// })
+// .then(function(tweets) {
+// 	console.log(JSON.stringify(tweets));
+// })
+
+// FIND BY TWEET ID
+// User.findOne({ where: {name: 'Tessa'}, include: [{model: Tweet, where: { id: 8}}]     })
+// .then(function(something) {
+// 	console.log(JSON.stringify(something.Tweets));
+// });
+
+
+// FIND ALL TWEETS WITH USER ID
+// Tweet.findAll({include: [User]})
+// .then(function(everything) {
+// 	console.log(JSON.stringify(everything));
+// })
+
+Tweet.create({userid: '3', tweet: 'this is a new tweet'})
+.then(function(msg) {
+	console.log(msg);
 });
+
