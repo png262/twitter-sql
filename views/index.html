@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+ 
+ <div class="page-header">
+   <h1>{{title}}</h1>
+ </div>
+ <div class="row">
+   <div class="col-md-3">
+     <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
+     <b>Your Name</b><br>
+     100 followers
+   </div>
+   <div class="col-md-9">
+   
+     <!-- display tweets here -->
+       
+   <div class="panel panel-default groups">
+       
+       {% if showForm %}
+         <form action="/" method="POST">
+           <label for="name_field">Name:</label>
+           <input name="name" type="text" value="{{name}}" id="name_field" />
+
+           <label for="text_field">Text:</label>
+           <input name="tweet" type="text" id="text_field" style="width: 350px;" />
+
+           <input class="button" type="submit" value="Submit" />
+         </form>
+       {% endif %}
+       
+    <div class="panel-heading">
+      <h2>Latest Tweets</h2>
+    </div>
+       <ul id='tweets'>
+     {% for tweet in tweets %}
+       <li class="tweet">
+           <div class="group-item">
+            <!-- <img src="img/group.png"> -->
+            <h4><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h4>
+               <p class="tweet-text"><a href="/users/{{tweet.name}}/tweets/{{tweet.id}}">{{tweet.text}}</a></p>
+          </div><!-- .group-item -->
+           <div class="clearfix"></div>
+       </li>
+       
+     {% endfor %}
+       </ul>
+       </div>
+       
+   </div>
+ </div>
+   
+{% endblock %}
