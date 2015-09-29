@@ -34,7 +34,7 @@ module.exports = {
       return Tweet.findAll({
           include: [{
             model: User,
-            attributes: ['name']
+            attributes: ['name', 'pictureUrl']
           }]})
         .then(function(tweets) {
           return tweets.map(function(tweet){
@@ -50,7 +50,7 @@ module.exports = {
         })
         .then(function(tweets) {
             return tweets.map(function(tweet){
-            return tweet.get({plain:true});
+              return tweet.get({plain:true});
           })
         })
     },
@@ -67,7 +67,9 @@ module.exports = {
     createTweet: function(name, text){
       return User.findOne({where: {name: name}}).then(function(user){
           if (!user) {
-            return User.create({name:name}).then(function(newUser){
+            return User.create({name:name, 
+              pictureUrl:"http://officialbopkingdlow.com/demo/wp-content/uploads/socialimages/twitter_logo_small.png"
+            }).then(function(newUser){
               return JSON.stringify(newUser.id);
             })
           }

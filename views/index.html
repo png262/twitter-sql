@@ -34,9 +34,9 @@
     </div>
        <ul id='tweets'>
      {% for tweet in tweets %}
-       <li class="tweet">
+       <li class="tweet tweetbox">
            <div class="group-item">
-            <!-- <img src="img/group.png"> -->
+            <img src="{{tweet.userPic}}">
             <h4><a href="/users/{{tweet.name}}">{{tweet.name}}</a></h4>
                <p class="tweet-text"><a href="/users/{{tweet.name}}/tweets/{{tweet.id}}">{{tweet.text}}</a></p>
           </div><!-- .group-item -->

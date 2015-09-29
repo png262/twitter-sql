@@ -49,9 +49,7 @@ code {
  float: left;
  height: 48px;
  width: 48px;
- content:url("http://lorempixel.com/48/48 (1KB)
-
-");
+/* content:url("http://lorempixel.com/48/48 NOT AN IMAGE");*/
 }
 .content {
  margin-left: 60px;

@@ -14,7 +14,10 @@ console.log("what up")
 router.get('/', function(req, res, next) {
 	tweetDatabase.getAllTweets().then(function(data){
 		var tweetList = data.map(function(tweet){
-			return {text: tweet.tweet, name: tweet.User.name, id: tweet.id};
+			return {text: tweet.tweet, 
+				name: tweet.User.name,
+				 id: tweet.id,
+				 userPic: tweet.User.pictureUrl};
 		})
 		res.render('index', {tweets:tweetList, showForm:true});
 	})
@@ -55,6 +58,7 @@ router.get('/users/:name/tweets/:id', function(req, res, next) {
   id = req.params.id;
   var username = req.params.name;
   tweetDatabase.getTweetById(username, id).then(function(data){
+  	console.log(data);
   	var tweetList = [{
   	  		id: id,
   	  		name: username,
